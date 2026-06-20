@@ -51,7 +51,7 @@ const { title, description } = Astro.props;
         <div class="relative inline-block text-left">
           <select 
             id="paletteSelect" 
-            class="bg-[var(--theme-surface-sub)] border border-[var(--theme-border-sub)] rounded-lg px-2 py-1 text-xs outline-none text-[var(--theme-text)] hover:border-[var(--theme-primary)] transition-all cursor-pointer"
+            class="bg-[var(--theme-surface-sub)] border border-[var(--theme-border-sub)] rounded-lg px-2 py-1 text-xs outline-none text-[var(--theme-text)] hover:border-[var(--theme-primary)] focus-visible:ring-2 focus-visible:ring-[var(--theme-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--theme-bg)] transition-all cursor-pointer"
           >
             <option value="cosmic" class="bg-[var(--theme-bg)] text-[var(--theme-text)]">⚡ Cosmic</option>
             <option value="emerald" class="bg-[var(--theme-bg)] text-[var(--theme-text)]">🌿 Emerald</option>

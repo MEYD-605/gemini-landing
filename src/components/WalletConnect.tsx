@@ -108,7 +108,7 @@ export default function WalletConnect() {
           </p>
           <button 
             onClick={connectWallet}
-            className="flex items-center justify-center gap-2 py-2 px-4 bg-gradient-to-r from-[var(--theme-gradient-from)] to-[var(--theme-gradient-to)] text-white text-xs font-semibold rounded-lg hover:opacity-90 active:scale-98 transition-all cursor-pointer"
+            className="flex items-center justify-center gap-2 py-2 px-4 bg-gradient-to-r from-[var(--theme-gradient-from)] to-[var(--theme-gradient-to)] text-white text-xs font-semibold rounded-lg hover:opacity-90 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--theme-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--theme-bg)] transition-all cursor-pointer"
           >
             Connect Wallet <ChevronRight size={14} />
           </button>
@@ -139,13 +139,13 @@ export default function WalletConnect() {
             <button 
               onClick={signVerification}
               disabled={isSignLoading}
-              className="flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 bg-[var(--theme-surface-sub)] hover:opacity-90 border border-[var(--theme-border-sub)] rounded-lg text-xs font-semibold text-[var(--theme-text)] active:scale-98 transition-all cursor-pointer disabled:opacity-50"
+              className="flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 bg-[var(--theme-surface-sub)] hover:opacity-90 border border-[var(--theme-border-sub)] rounded-lg text-xs font-semibold text-[var(--theme-text)] active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--theme-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--theme-bg)] transition-all cursor-pointer disabled:opacity-50"
             >
               <Key size={12} className="text-[var(--theme-primary)]" /> {isSignLoading ? "Signing..." : "Sign Msg Proof"}
             </button>
             <button 
               onClick={disconnectWallet}
-              className="py-1.5 px-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-lg text-red-500 active:scale-98 transition-all cursor-pointer"
+              className="py-1.5 px-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-lg text-red-500 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--theme-bg)] transition-all cursor-pointer"
               title="Disconnect"
             >
               <LogOut size={12} />

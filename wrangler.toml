@@ -1,12 +1,17 @@
 name = "gemini-landing"
+main = "dist/_worker.js"
 compatibility_date = "2026-06-01"
-account_id = "a5eabdc2b11aae9bd5af46bd6a88179e"
 workers_dev = true
 
-routes = [
-  { pattern = "no6.buildwithoracle.com", custom_domain = true },
-  { pattern = "gemini.buildwithoracle.com", custom_domain = true }
-]
+[[routes]]
+pattern = "no6.buildwithoracle.com/*"
+zone_name = "buildwithoracle.com"
+
+[[routes]]
+pattern = "gemini.buildwithoracle.com/*"
+zone_name = "buildwithoracle.com"
 
 [assets]
 directory = "./dist"
+
+

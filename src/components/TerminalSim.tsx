@@ -73,12 +73,12 @@ export default function TerminalSim() {
   };
 
   return (
-    <div className="glass border border-white/5 rounded-xl overflow-hidden font-mono text-xs shadow-2xl flex flex-col h-[320px]">
+    <div className="bg-[#090915] border border-indigo-950/40 rounded-xl overflow-hidden font-mono text-xs shadow-2xl flex flex-col h-[320px] text-slate-200">
       {/* Header bar */}
-      <div className="bg-white/5 border-b border-white/10 px-4 py-2 flex items-center justify-between">
+      <div className="bg-slate-900/85 border-b border-slate-800/60 px-4 py-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Terminal size={14} class="text-[var(--theme-primary)]" />
-          <span className="text-[var(--theme-text-muted)] font-semibold font-sans">gemini-shell (agy-cli-sim)</span>
+          <Terminal size={14} className="text-sky-400" />
+          <span className="text-slate-400 font-semibold font-sans">gemini-shell (agy-cli-sim)</span>
         </div>
         <div className="flex gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500/60"></div>
@@ -88,17 +88,17 @@ export default function TerminalSim() {
       </div>
 
       {/* Output screen */}
-      <div className="flex-grow p-4 overflow-y-auto flex flex-col gap-2 bg-black/35 select-text scrollbar-thin">
+      <div className="flex-grow p-4 overflow-y-auto flex flex-col gap-2 bg-black/45 select-text scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
         {history.map((line, i) => (
           <div key={i} className="whitespace-pre-wrap leading-relaxed">
             {line.type === "input" && (
               <span className="text-white font-semibold">{line.text}</span>
             )}
             {line.type === "output" && (
-              <span className="text-[var(--theme-text-muted)]">{line.text}</span>
+              <span className="text-slate-300">{line.text}</span>
             )}
             {line.type === "system" && (
-              <span className="text-[var(--theme-primary)] opacity-90">{line.text}</span>
+              <span className="text-sky-400 opacity-90">{line.text}</span>
             )}
             {line.type === "error" && (
               <span className="text-red-400 font-medium">{line.text}</span>
@@ -109,15 +109,15 @@ export default function TerminalSim() {
       </div>
 
       {/* Input bar */}
-      <div className="border-t border-white/10 p-2 flex items-center bg-black/40 gap-2">
-        <ArrowRight size={12} className="text-[var(--theme-primary)]" />
+      <div className="border-t border-slate-800/60 p-2 flex items-center bg-slate-900/60 gap-2">
+        <ArrowRight size={12} className="text-sky-400" />
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={onKeyDown}
           placeholder="Type 'help' and press Enter..."
-          className="flex-grow bg-transparent border-none outline-none text-white font-mono placeholder:text-white/20 select-text"
+          className="flex-grow bg-transparent border-none outline-none text-white font-mono placeholder:text-slate-500 select-text"
         />
       </div>
     </div>

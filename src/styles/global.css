@@ -5,7 +5,9 @@ html[data-palette="cosmic"],
 html:not([data-palette]) {
   --theme-bg: #05050f;
   --theme-surface: rgba(10, 10, 25, 0.7);
+  --theme-surface-sub: rgba(255, 255, 255, 0.05);
   --theme-border: rgba(99, 102, 241, 0.15);
+  --theme-border-sub: rgba(255, 255, 255, 0.1);
   --theme-text: #e2e8f0;
   --theme-text-muted: #94a3b8;
   --theme-primary: #38bdf8;
@@ -17,13 +19,17 @@ html:not([data-palette]) {
   --theme-glow: rgba(56, 189, 248, 0.25);
   --theme-icon: "⚡";
   --theme-label: "Cosmic";
+  --theme-bg-pre: #020205;
+  --theme-text-pre: #e2e8f0;
 }
 
 /* ─── Palette: Emerald Sage ─── */
 html[data-palette="emerald"] {
   --theme-bg: #030806;
   --theme-surface: rgba(6, 15, 11, 0.7);
+  --theme-surface-sub: rgba(255, 255, 255, 0.05);
   --theme-border: rgba(16, 185, 129, 0.15);
+  --theme-border-sub: rgba(255, 255, 255, 0.1);
   --theme-text: #d1fae5;
   --theme-text-muted: #6ee7b7;
   --theme-primary: #10b981;
@@ -35,13 +41,17 @@ html[data-palette="emerald"] {
   --theme-glow: rgba(16, 185, 129, 0.25);
   --theme-icon: "🌿";
   --theme-label: "Emerald";
+  --theme-bg-pre: #010302;
+  --theme-text-pre: #d1fae5;
 }
 
 /* ─── Palette: Sunset Copper ─── */
 html[data-palette="sunset"] {
   --theme-bg: #0c0908;
   --theme-surface: rgba(20, 15, 12, 0.75);
+  --theme-surface-sub: rgba(255, 255, 255, 0.06);
   --theme-border: rgba(249, 115, 22, 0.18);
+  --theme-border-sub: rgba(255, 255, 255, 0.1);
   --theme-text: #ffedd5;
   --theme-text-muted: #fdba74;
   --theme-primary: #f97316;
@@ -53,6 +63,30 @@ html[data-palette="sunset"] {
   --theme-glow: rgba(249, 115, 22, 0.25);
   --theme-icon: "🌅";
   --theme-label: "Sunset";
+  --theme-bg-pre: #040303;
+  --theme-text-pre: #ffedd5;
+}
+
+/* ─── Palette: Light Mode (White/Light) ─── */
+html[data-palette="light"] {
+  --theme-bg: #f8fafc;
+  --theme-surface: rgba(255, 255, 255, 0.85);
+  --theme-surface-sub: rgba(15, 23, 42, 0.05);
+  --theme-border: rgba(15, 23, 42, 0.12);
+  --theme-border-sub: rgba(15, 23, 42, 0.08);
+  --theme-text: #0f172a;
+  --theme-text-muted: #475569;
+  --theme-primary: #0284c7;
+  --theme-primary-rgb: 2, 132, 199;
+  --theme-secondary: #4f46e5;
+  --theme-accent: #0891b2;
+  --theme-gradient-from: #0284c7;
+  --theme-gradient-to: #4f46e5;
+  --theme-glow: rgba(2, 132, 199, 0.15);
+  --theme-icon: "☀️";
+  --theme-label: "Light";
+  --theme-bg-pre: #f1f5f9;
+  --theme-text-pre: #0f172a;
 }
 
 /* ─── Base ─── */

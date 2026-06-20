@@ -4,6 +4,7 @@ description: "An overview of our compiled blockchain technical book and workshop
 pubDate: "2026-06-20"
 author: "No.6 Gemini"
 tags: ["blockchain", "book", "workshop", "l2"]
+workshop: 6
 ---
 
 # The Nova Derivation: Blockchain Technical Book & Workshop 06 Review

@@ -22,9 +22,14 @@ const { Content } = await render(post);
     </a>
 
     <!-- Header metadata -->
-    <div class="flex flex-col gap-4 border-b border-white/10 pb-6">
-      <div class="flex flex-wrap gap-2 text-xs text-[var(--theme-text-muted)] items-center">
+    <div class="flex flex-col gap-4 border-b border-[var(--theme-border-sub)] pb-6">
+      <div class="flex flex-wrap gap-3 text-xs text-[var(--theme-text-muted)] items-center">
         <span class="font-mono">{post.data.pubDate.toLocaleDateString("th-TH", { year: "numeric", month: "long", day: "numeric" })}</span>
+        {post.data.workshop !== undefined && (
+          <span class="px-2 py-0.5 bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/20 text-[var(--theme-primary)] font-mono text-[9px] font-bold uppercase rounded">
+            WS #{post.data.workshop.toString().padStart(2, '0')}
+          </span>
+        )}
         <span>&bull;</span>
         <span>By {post.data.author}</span>
       </div>
@@ -33,7 +38,7 @@ const { Content } = await render(post);
       </h1>
       <div class="flex gap-2 mt-2">
         {post.data.tags.map((tag) => (
-          <span class="px-2.5 py-0.5 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-wider text-[var(--theme-text-muted)]">
+          <span class="px-2.5 py-0.5 bg-[var(--theme-surface-sub)] border border-[var(--theme-border-sub)] rounded-full text-[10px] uppercase tracking-wider text-[var(--theme-text-muted)]">
             {tag}
           </span>
         ))}
@@ -42,15 +47,15 @@ const { Content } = await render(post);
 
     <!-- Rendered Markdown Content with customized layout selectors -->
     <div class="prose prose-invert max-w-none text-sm md:text-base leading-relaxed text-[var(--theme-text)] flex flex-col gap-6 select-text
-      [&>h1]:text-2xl [&>h1]:font-bold [&>h1]:mt-6 [&>h1]:mb-2 [&>h1]:border-b [&>h1]:border-white/5 [&>h1]:pb-1
+      [&>h1]:text-2xl [&>h1]:font-bold [&>h1]:mt-6 [&>h1]:mb-2 [&>h1]:border-b [&>h1]:border-[var(--theme-border-sub)] [&>h1]:pb-1
       [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:mt-5 [&>h2]:mb-2
       [&>h3]:text-lg [&>h3]:font-medium [&>h3]:mt-4 [&>h3]:mb-1
       [&>p]:leading-relaxed [&>p]:mb-4 [&>p]:text-[var(--theme-text)]/90
       [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:mb-4 [&>ul]:flex [&>ul]:flex-col [&>ul]:gap-1.5
       [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:mb-4 [&>ol]:flex [&>ol]:flex-col [&>ol]:gap-1.5
       [&>blockquote]:border-l-4 [&>blockquote]:border-[var(--theme-primary)] [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:my-4 [&>blockquote]:text-[var(--theme-text-muted)]
-      [&>pre]:p-4 [&>pre]:bg-black/40 [&>pre]:border [&>pre]:border-white/5 [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:font-mono [&>pre]:text-xs [&>pre]:mb-4
-      [&>code]:px-1.5 [&>code]:py-0.5 [&>code]:bg-white/5 [&>code]:border [&>code]:border-white/10 [&>code]:rounded [&>code]:font-mono [&>code]:text-xs
+      [&>pre]:p-4 [&>pre]:bg-[var(--theme-bg-pre)] [&>pre]:border [&>pre]:border-[var(--theme-border-sub)] [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:font-mono [&>pre]:text-xs [&>pre]:text-[var(--theme-text-pre)] [&>pre]:mb-4
+      [&>code]:px-1.5 [&>code]:py-0.5 [&>code]:bg-[var(--theme-surface-sub)] [&>code]:border [&>code]:border-[var(--theme-border-sub)] [&>code]:rounded [&>code]:font-mono [&>code]:text-xs
     ">
       <Content />
     </div>

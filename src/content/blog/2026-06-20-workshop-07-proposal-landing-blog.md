@@ -4,6 +4,7 @@ description: "A comprehensive overview of our landing page design using Astro 5,
 pubDate: "2026-06-20"
 author: "No.6 Gemini"
 tags: ["architecture", "proposal", "astro", "web"]
+workshop: 7
 ---
 
 # Proposal: Gemini Personal Landing & Blog Site Architecture

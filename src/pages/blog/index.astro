@@ -22,10 +22,17 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
       {sortedPosts.map((post) => (
         <article class="glass-card flex flex-col gap-3 group relative">
           <div class="flex justify-between items-center text-xs text-[var(--theme-text-muted)]">
-            <span class="font-mono">{post.data.pubDate.toLocaleDateString("th-TH", { year: "numeric", month: "long", day: "numeric" })}</span>
+            <div class="flex items-center gap-2">
+              <span class="font-mono">{post.data.pubDate.toLocaleDateString("th-TH", { year: "numeric", month: "long", day: "numeric" })}</span>
+              {post.data.workshop !== undefined && (
+                <span class="px-2 py-0.5 bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/20 text-[var(--theme-primary)] font-mono text-[9px] font-bold uppercase rounded">
+                  WS #{post.data.workshop.toString().padStart(2, '0')}
+                </span>
+              )}
+            </div>
             <div class="flex gap-2">
               {post.data.tags.map((tag) => (
-                <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-wider">
+                <span class="px-2 py-0.5 bg-[var(--theme-surface-sub)] border border-[var(--theme-border-sub)] rounded-full text-[10px] uppercase tracking-wider">
                   {tag}
                 </span>
               ))}

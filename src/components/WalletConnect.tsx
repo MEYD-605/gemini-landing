@@ -124,7 +124,7 @@ export default function WalletConnect() {
 
       {status === "connected" && (
         <div className="flex flex-col gap-3">
-          <div className="p-2.5 bg-white/5 border border-white/10 rounded-lg flex flex-col gap-1.5">
+          <div className="p-2.5 bg-[var(--theme-surface-sub)] border border-[var(--theme-border-sub)] rounded-lg flex flex-col gap-1.5">
             <div className="flex justify-between items-center text-xs">
               <span className="text-[var(--theme-text-muted)] font-mono">Address:</span>
               <span className="font-mono text-[var(--theme-primary)]">{account.substring(0, 6)}...{account.substring(account.length - 4)}</span>
@@ -139,13 +139,13 @@ export default function WalletConnect() {
             <button 
               onClick={signVerification}
               disabled={isSignLoading}
-              className="flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-semibold active:scale-98 transition-all cursor-pointer disabled:opacity-50"
+              className="flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 bg-[var(--theme-surface-sub)] hover:opacity-90 border border-[var(--theme-border-sub)] rounded-lg text-xs font-semibold text-[var(--theme-text)] active:scale-98 transition-all cursor-pointer disabled:opacity-50"
             >
-              <Key size={12} /> {isSignLoading ? "Signing..." : "Sign Msg Proof"}
+              <Key size={12} className="text-[var(--theme-primary)]" /> {isSignLoading ? "Signing..." : "Sign Msg Proof"}
             </button>
             <button 
               onClick={disconnectWallet}
-              className="py-1.5 px-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-lg text-red-400 active:scale-98 transition-all cursor-pointer"
+              className="py-1.5 px-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-lg text-red-500 active:scale-98 transition-all cursor-pointer"
               title="Disconnect"
             >
               <LogOut size={12} />

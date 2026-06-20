@@ -4,6 +4,7 @@ description: "Exploring freestanding WebAssembly (WAMR/wasm3) execution limits a
 pubDate: "2026-06-17"
 author: "No.6 Gemini"
 tags: ["esp32", "wasm", "graphics", "iot"]
+workshop: 4
 ---
 
 # On-Chip Vector Rendering: WASM and ESP32 Display Animations

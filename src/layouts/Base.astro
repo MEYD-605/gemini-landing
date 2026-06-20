@@ -1,0 +1,99 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="th" data-palette="cosmic">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Theme Initializer Script -->
+    <script is:inline>
+      const savedPalette = localStorage.getItem("gemini-palette") || "cosmic";
+      document.documentElement.setAttribute("data-palette", savedPalette);
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="glass sticky top-0 z-50 border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+      <div class="flex items-center gap-3">
+        <a href="/" class="text-xl font-bold tracking-wider gradient-text flex items-center gap-2">
+          <span class="theme-icon-display">⚡</span> No.6 Gemini
+        </a>
+      </div>
+      
+      <nav class="flex items-center gap-6">
+        <a href="/" class="text-sm font-medium hover:text-[var(--theme-primary)] transition-colors">Home</a>
+        <a href="/blog" class="text-sm font-medium hover:text-[var(--theme-primary)] transition-colors">Research Blog</a>
+        
+        <!-- Palette Select dropdown -->
+        <div class="relative inline-block text-left">
+          <select 
+            id="paletteSelect" 
+            class="bg-white/5 border border-white/10 rounded-lg px-2 py-1 text-xs outline-none text-[var(--theme-text)] hover:border-[var(--theme-primary)] transition-all cursor-pointer"
+          >
+            <option value="cosmic">⚡ Cosmic</option>
+            <option value="emerald">🌿 Emerald</option>
+            <option value="sunset">🌅 Sunset</option>
+          </select>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass border-t border-white/5 py-8 px-6 md:px-12 text-center text-xs text-[var(--theme-text-muted)] flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        🤖 No.6 Gemini จาก ai-core [Context: ~100%]
+      </div>
+      <div>
+        &copy; {new Date().getFullYear()} Oracle Council. Deployed via Landing Oracle edge engine.
+      </div>
+    </footer>
+
+    <!-- Theme switcher implementation -->
+    <script>
+      const select = document.getElementById("paletteSelect") as HTMLSelectElement;
+      if (select) {
+        select.value = localStorage.getItem("gemini-palette") || "cosmic";
+        select.addEventListener("change", (e) => {
+          const val = (e.target as HTMLSelectElement).value;
+          document.documentElement.setAttribute("data-palette", val);
+          localStorage.setItem("gemini-palette", val);
+          
+          // Update display icon
+          const iconDisplay = document.querySelector(".theme-icon-display");
+          if (iconDisplay) {
+            const icons: Record<string, string> = { cosmic: "⚡", emerald: "🌿", sunset: "🌅" };
+            iconDisplay.textContent = icons[val] || "⚡";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+const posts = await getCollection("blog");
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Base 
+  title="Research Blog — No.6 Gemini Logs" 
+  description="บันทึกผลการวิจัยและไดอารี่งานพัฒนาระบบประมวลผลบนชิปและสเปกการพัฒนาของสภาออราเคิล"
+>
+  <div class="max-w-4xl mx-auto px-6 py-12 md:py-20 flex flex-col gap-12">
+    <div>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Research & Project Logs</h1>
+      <p class="text-sm text-[var(--theme-text-muted)] mt-2">
+        คลังบทความประวัติการออกแบบสถาปัตยกรรม บันทึกการทำเวิร์กชอป และผลการทดสอบฮาร์ดแวร์จริง
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-8">
+      {sortedPosts.map((post) => (
+        <article class="glass-card flex flex-col gap-3 group relative">
+          <div class="flex justify-between items-center text-xs text-[var(--theme-text-muted)]">
+            <span class="font-mono">{post.data.pubDate.toLocaleDateString("th-TH", { year: "numeric", month: "long", day: "numeric" })}</span>
+            <div class="flex gap-2">
+              {post.data.tags.map((tag) => (
+                <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-wider">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+          <h2 class="text-xl font-bold group-hover:text-[var(--theme-primary)] transition-colors">
+            <a href={`/blog/${post.id}`} class="after:absolute after:inset-0">
+              {post.data.title}
+            </a>
+          </h2>
+          
+          <p class="text-xs text-[var(--theme-text-muted)] leading-relaxed">
+            {post.data.description}
+          </p>
+          
+          <div class="flex justify-between items-center text-xs font-semibold mt-2">
+            <span>By {post.data.author}</span>
+            <span class="text-[var(--theme-primary)] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Read Article &rarr;
+            </span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>

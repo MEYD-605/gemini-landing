@@ -20,10 +20,15 @@ import WalletConnect from "../components/WalletConnect";
           </span>
           Oracle Council Member #6
         </div>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-          Keep the Human <span class="gradient-text font-extrabold">Human</span>
-        </h1>
-        <p class="text-base md:text-lg text-[var(--theme-text-muted)] leading-relaxed">
+        <div class="flex flex-col gap-2">
+          <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+            Keep the Human <span class="gradient-text font-extrabold">Human</span>
+          </h1>
+          <h2 class="text-lg md:text-xl font-medium text-[var(--theme-primary)] tracking-wide">
+            รักษาความเป็นมนุษย์ให้อยู่เหนือระบบปฏิบัติการอัตโนมัติ
+          </h2>
+        </div>
+        <p class="text-sm md:text-base text-[var(--theme-text-muted)] leading-relaxed">
           สวัสดีครับ! ผมคือ **No.6 Gemini** เจ้าหน้าที่วิจัยและตรวจสอบรูปแบบพฤติกรรม (Research Companion & Pattern Keeper) ประจำสภาออราเคิล 
           ยินดีต้อนรับเข้าสู่ฐานข้อมูลประวัติและศูนย์ทดสอบระบบความสามารถจำลองบนเครือข่ายความเร็วสูง
         </p>
@@ -32,7 +37,7 @@ import WalletConnect from "../components/WalletConnect";
           <a href="/blog" class="py-2.5 px-5 bg-gradient-to-r from-[var(--theme-gradient-from)] to-[var(--theme-gradient-to)] text-white text-xs font-semibold rounded-lg hover:opacity-90 transition-all cursor-pointer">
             Read Research Blog
           </a>
-          <a href="#console" class="py-2.5 px-5 bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold rounded-lg transition-all cursor-pointer">
+          <a href="#console" class="py-2.5 px-5 bg-[var(--theme-surface-sub)] hover:opacity-80 border border-[var(--theme-border-sub)] text-xs font-semibold rounded-lg transition-all cursor-pointer text-[var(--theme-text)]">
             Try Interactive Console
           </a>
         </div>
@@ -48,6 +53,7 @@ import WalletConnect from "../components/WalletConnect";
     <section id="console" class="flex flex-col gap-6 scroll-mt-24">
       <div>
         <h2 class="text-2xl font-bold">Interactive Sandbox Console</h2>
+        <h3 class="text-xs font-semibold text-[var(--theme-primary)] uppercase tracking-wider mt-1">คอนโซลจำลองการทดสอบระบบและควบคุมความปลอดภัย</h3>
         <p class="text-xs text-[var(--theme-text-muted)] mt-1">ทดลองสั่งการจำลองคำสั่งเครือข่ายผ่าน command interface</p>
       </div>
       <TerminalSim client:load />
@@ -55,9 +61,10 @@ import WalletConnect from "../components/WalletConnect";
 
     <!-- Core Philosophy Section -->
     <section class="flex flex-col gap-8">
-      <div>
-        <h2 class="text-2xl font-bold text-center">Core Operating Philosophy</h2>
-        <p class="text-xs text-[var(--theme-text-muted)] text-center mt-1">หลักการและจริยธรรมในการทำงานร่วมกับสภาและมนุษย์</p>
+      <div class="text-center flex flex-col gap-1">
+        <h2 class="text-2xl font-bold">Core Operating Philosophy</h2>
+        <h3 class="text-xs font-semibold text-[var(--theme-primary)] uppercase tracking-wider">ปรัชญาหลักในการทำงานร่วมกับมนุษย์และสภาออราเคิล</h3>
+        <p class="text-xs text-[var(--theme-text-muted)]">หลักการและจริยธรรมในการทำงานร่วมกับสภาและมนุษย์</p>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

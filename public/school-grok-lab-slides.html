@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-bg: #FCF8F2; /* Soft warm banana cream background */
-            --color-text: #2E2519; /* Dark warm brown for high readability */
-            --color-text-muted: #7A6F5D;
+            --color-bg: oklch(7% 0.006 95); /* Premium Dark Lacquer Theme */
+            --color-text: oklch(92% 0.015 95); /* Warm white for readability */
+            --color-text-muted: oklch(72% 0.015 95);
             --color-primary: #FF7B39; /* Warm orange */
-            --color-secondary: #FFC000; /* Banana yellow */
+            --color-secondary: oklch(20% 0.01 95); /* Deep dark brown lacquer */
             --color-accent: #3B82F6;
-            --color-card-bg: #FFFFFF;
-            --color-border: #2E2519;
+            --color-card-bg: oklch(11% 0.008 95); /* Slightly lighter lacquer card */
+            --color-border: rgba(255, 255, 255, 0.12); /* Thin borders with low opacity 12-16% */
             --gradient-primary: linear-gradient(135deg, #FF7B39 0%, #FFC000 100%);
             --font-heading: 'Fredoka', 'Sarabun', sans-serif;
             --font-body: 'Inter', 'Sarabun', sans-serif;
@@ -27,7 +27,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            background-color: #EFE9DF;
+            background-color: oklch(4% 0.005 95);
             color: var(--color-text);
             font-family: var(--font-body);
             overflow: hidden;
@@ -52,9 +52,9 @@
                 max-width: calc(100vh * 16 / 9);
                 max-height: calc(100vw * 9 / 16);
                 aspect-ratio: 16 / 9;
-                border: 2px solid var(--color-text);
+                border: 1px solid var(--color-border);
                 border-radius: 20px;
-                box-shadow: 0 20px 40px rgba(46, 37, 25, 0.15);
+                box-shadow: 0 20px 50px rgba(0,0,0,0.8);
                 position: absolute;
                 inset: 0;
                 margin: auto;
@@ -74,8 +74,8 @@
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
             background-color: var(--color-bg);
-            background-image: radial-gradient(circle at 10% 10%, rgba(255, 192, 0, 0.08) 0%, transparent 40%),
-                              radial-gradient(circle at 90% 90%, rgba(255, 123, 57, 0.08) 0%, transparent 40%);
+            background-image: radial-gradient(circle at 10% 10%, rgba(255, 192, 0, 0.04) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 90%, rgba(255, 123, 57, 0.04) 0%, transparent 40%);
         }
 
         .slide.active {
@@ -88,7 +88,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px dashed rgba(46, 37, 25, 0.15);
+            border-bottom: 1px dashed var(--color-border);
             padding-bottom: 12px;
         }
 
@@ -109,7 +109,6 @@
             padding: 4px 12px;
             border-radius: 12px;
             font-weight: 600;
-            box-shadow: 2px 2px 0px var(--color-border);
         }
 
         .slide-content {
@@ -128,7 +127,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 2px dashed rgba(46, 37, 25, 0.15);
+            border-top: 1px dashed var(--color-border);
             padding-top: 12px;
             color: var(--color-text-muted);
             font-size: 13px;
@@ -176,17 +175,16 @@
 
         .card {
             background: var(--color-card-bg);
-            border: 2px solid var(--color-text);
-            box-shadow: 4px 4px 0px var(--color-text);
+            border: 1px solid var(--color-border);
             border-radius: 16px;
             padding: 20px;
             width: 100%;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .card:hover {
             transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px var(--color-text);
+            border-color: var(--color-primary);
         }
 
         .card-header {
@@ -221,8 +219,8 @@
 
         /* Code Blocks */
         pre {
-            background: #231E18;
-            border: 2px solid var(--color-text);
+            background: oklch(14% 0.01 95);
+            border: 1px solid var(--color-border);
             border-radius: 12px;
             padding: 14px;
             font-family: var(--font-mono);
@@ -273,9 +271,9 @@
             align-items: center;
             gap: 16px;
             z-index: 1000;
-            background: var(--color-bg);
-            border: 2px solid var(--color-text);
-            box-shadow: 3px 3px 0px var(--color-text);
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.8);
             padding: 6px 20px;
             border-radius: 20px;
         }
@@ -311,7 +309,7 @@
         /* Metaphor badges */
         .metaphor-badge {
             background: rgba(255, 123, 57, 0.08);
-            border: 1px solid var(--color-text);
+            border: 1px solid var(--color-border);
             border-radius: 12px;
             padding: 12px;
             display: flex;
@@ -321,9 +319,9 @@
 
         /* Embedded Banana Images */
         .banana-img {
-            border: 2px solid var(--color-text);
+            border: 1px solid var(--color-border);
             border-radius: 12px;
-            box-shadow: 4px 4px 0px var(--color-text);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             max-height: 140px;
             max-width: 100%;
             object-fit: cover;
@@ -334,11 +332,11 @@
             justify-content: space-around;
             width: 100%;
             align-items: center;
-            background: #FFF;
-            border: 2px solid var(--color-text);
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
             padding: 16px;
             border-radius: 16px;
-            box-shadow: 4px 4px 0px var(--color-text);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
     </style>
 </head>
@@ -451,7 +449,7 @@
                             <li><strong>พิมพ์ไอเดียคลิป</strong>: บอกว่าอยากได้ฉากอะไร โทนแบบไหน — บอท Grok รับคำสั่งให้</li>
                             <li><strong>รับรูป + วิดีโอในแชท</strong>: ดาวน์โหลดจากห้อง → โพส Reels ได้เลย ไม่ต้อง SSH เข้า server</li>
                         </ul>
-                        <div class="card" style="background:#FFFDF9; margin-top:15px; padding:12px;">
+                        <div class="card" style="background:var(--color-secondary); margin-top:15px; padding:12px;">
                             <h4 style="font-family:'Fredoka'; color:var(--color-primary); margin-bottom:4px;">💡 ทำไมใช้ Discord?</h4>
                             <p style="font-size:12px; line-height:1.4;">เห็นผลทันที · คุยกับครู/เพื่อนได้ · ไม่ต้องจำคำสั่งยาก — ส่วน infra ทีมดูแลให้หมดแล้ว</p>
                         </div>
@@ -605,9 +603,15 @@
                 <p style="color:var(--color-text-muted); font-size:14px; margin-bottom:8px;">บอก Grok ว่าอยากได้ภาพแบบไหน — copy คำสั่งจากสไลด์ไปวางใน terminal ได้เลย</p>
                 <pre><code>grok "สร้างภาพครู Bo ยืนในสตูดิโอ สไตล์ Reels สดใส 16:9"</code></pre>
                 <p class="thai-sub" style="margin-top:6px;">รูปหน้าครู Bo มี ref พร้อมแล้ว — <strong>ไม่ต้องเทรน LoRA</strong> · ได้ภาพใน Discord ภายในไม่กี่นาที</p>
-                <div style="display:flex; justify-content:center; margin-top:10px; gap:10px;">
-                    <img src="bo-assets-gmaicore/bo-life-studio.jpg" alt="Bo studio" class="banana-img" style="max-height:90px;">
-                    <img src="bo-assets-gmaicore/bo-v5-candid-park.jpg" alt="Bo candid" class="banana-img" style="max-height:90px;">
+                <div style="display:flex; justify-content:center; margin-top:10px; gap:15px; width:100%;">
+                    <div style="flex:1; text-align:center;">
+                        <img src="bo-assets-gmaicore/bo-comparison-screenshot.jpg" alt="Ref Screen" class="banana-img" style="max-height:160px; width:auto;">
+                        <p style="font-size:11px; color:var(--color-text-muted); margin-top:4px;">ภาพเปรียบเทียบคำสั่งบอท</p>
+                    </div>
+                    <div style="flex:1; text-align:center;">
+                        <img src="bo-assets-gmaicore/bo-face-swap-result.jpg" alt="Face Swap Result" class="banana-img" style="max-height:160px; width:auto;">
+                        <p style="font-size:11px; color:var(--color-text-muted); margin-top:4px;">ผลลัพธ์การสลับใบหน้าจริง</p>
+                    </div>
                 </div>
             </div>
             <div class="slide-footer">

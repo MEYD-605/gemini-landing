@@ -357,12 +357,48 @@
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
+
+        /* Subtle rising beer bubbles */
+        @keyframes rise {
+            0% { transform: translateY(0) scale(0.6); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-90vh) scale(1.1); opacity: 0; }
+        }
+        .bubble-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -30px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), rgba(245, 158, 11, 0.05));
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 50%;
+            animation: rise 9s infinite linear;
+        }
     </style>
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
 
     <div class="slide-deck">
+        <!-- Bubbling IPA Beer Foam Effect -->
+        <div class="bubble-bg">
+            <div class="bubble" style="left: 10%; width: 14px; height: 14px; animation-duration: 8s; animation-delay: 0s;"></div>
+            <div class="bubble" style="left: 25%; width: 22px; height: 22px; animation-duration: 11s; animation-delay: 2s;"></div>
+            <div class="bubble" style="left: 40%; width: 12px; height: 12px; animation-duration: 7s; animation-delay: 0.5s;"></div>
+            <div class="bubble" style="left: 55%; width: 18px; height: 18px; animation-duration: 9s; animation-delay: 3s;"></div>
+            <div class="bubble" style="left: 70%; width: 15px; height: 15px; animation-duration: 10s; animation-delay: 1.5s;"></div>
+            <div class="bubble" style="left: 85%; width: 20px; height: 20px; animation-duration: 8.5s; animation-delay: 4s;"></div>
+            <div class="bubble" style="left: 93%; width: 10px; height: 10px; animation-duration: 6s; animation-delay: 1s;"></div>
+        </div>
         <!-- SLIDE 1: Title -->
         <div class="slide active">
             <div class="slide-header">
@@ -397,8 +433,8 @@
                     <p style="color:var(--color-text-muted); font-size:14px; margin-top:-4px;"><em>เคยต้องวุ่นวายกับการเซ็ตเซิร์ฟเวอร์และตั้งค่าโค้ดหลังบ้านเป็นวันๆ → พรุ่งนี้แค่ป้อนไอเดียใน Discord ทีมหลังบ้านพร้อมโมเดล LoRA สำเร็จรูปจะจัดการให้หมด!</em></p>
                     <div style="display:flex; flex-direction:column; gap:12px;">
                         <div class="card" style="padding:12px 16px;">
-                            <h4 style="color:var(--color-primary); font-size:16px; margin-bottom:4px;">🤖 เจนคลิปทาง Discord & Terminal เล็กน้อย</h4>
-                            <p style="font-size:12px; line-height:1.4;">คุยสั่งงานบอทใน Discord ได้ง่ายๆ และใช้คำสั่ง terminal ล็อกอินสั้นๆ 3-4 บรรทัด เรียกใช้โมเดล LoRA หน้าครู Bo ได้โดยไม่ต้องเทรนเองให้ยุ่งยาก</p>
+                            <h4 style="color:var(--color-primary); font-size:16px; margin-bottom:4px;">🤖 สั่งบอท Discord เจนภาพ-วิดีโอ-เสียงฟรี!</h4>
+                            <p style="font-size:12px; line-height:1.4;">ใช้งานระบบ <strong>Grok CLI</strong> ที่สามารถเจนภาพ เจนวิดีโอ และเจนเสียงได้ฟรี รวมอยู่ในแพ็กเกจ Super Grok สั่งงานง่ายผ่าน Discord ลดขั้นตอนซับซ้อน!</p>
                         </div>
                         <div class="card" style="padding:12px 16px;">
                             <h4 style="color:var(--color-accent); font-size:16px; margin-bottom:4px;">🎨 สตอรี่บอร์ด มุมกล้อง & เทคนิคแต่งสี</h4>
@@ -461,17 +497,30 @@
                 <span class="tag">DEMO SHOWCASE</span>
             </div>
             <div class="slide-content" style="flex-direction:row; gap:40px; align-items:center;">
-                <div style="flex:1.0; text-align:left;">
-                    <h2>ผลงานจริงจากทีมบอท <span class="subtitle">/ Real Output Showcase</span></h2>
-                    <p style="color:var(--color-text-muted); font-size:14px; margin-top:10px; margin-bottom:15px;">ตัวอย่างคลิปโฆษณาที่เจนและผลิตด้วยระบบ <strong>Grok CLI & Discord Bot</strong> 100% — ส่งผ่าน Discord โดยไม่ใช้การตัดต่อมือ!</p>
-                    <ul style="display:flex; flex-direction:column; gap:10px;">
-                        <li>🎬 <strong>เจนภาพและควบคุมช็อต</strong>: เคยต้องจัดฉากจริง → พรุ่งนี้สั่งปรับมุมต่ำ/เฉียงได้ทันทีในแชท</li>
-                        <li>⚡ <strong>ควบคุมการเคลื่อนกล้อง</strong>: สั่งแพนกล้อง ดอลลี่ หรือหมุนซูมได้เสมือนตากล้องมือโปร</li>
-                        <li>🎨 <strong>โทนสีระดับภาพยนตร์</strong>: ปรับแต่งเกรดโทนสีช็อตต่อช็อตด้วย Preset DNA ของครู Bo</li>
-                    </ul>
+                <div style="flex:1.1; text-align:left;">
+                    <h2>เบื้องหลังคลิปช้าง <span class="subtitle">/ Chang-Ad Storyboard</span></h2>
+                    <p style="color:var(--color-text-muted); font-size:13px; margin-top:6px; margin-bottom:12px;"><strong>คุย Discord วน Feedback</strong> ➔ บอทตัดต่อภาพ ซับไตเติล และ End Card ให้เสร็จสรรพโดยไม่ต้องเปิดโปรแกรม Premiere Pro!</p>
+                    
+                    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:12px;">
+                        <div class="card" style="padding:10px; border-color:var(--color-primary); background:rgba(245, 158, 11, 0.04); margin:0;">
+                            <h5 style="color:var(--color-primary); font-size:13px; margin-bottom:2px;">🎬 3 จังหวะหลัก (Beats) ที่ครู Bo เคี่ยวจนสำเร็จ:</h5>
+                            <ol style="font-size:12px; line-height:1.4; padding-left:16px; display:flex; flex-direction:column; gap:4px; margin-top:4px;">
+                                <li><strong>Lonely Cinematic</strong>: ช็อตเปิดสุดเหงากลางคืนที่มีบรรยากาศภาพยนตร์</li>
+                                <li><strong>Bar + Sapporo</strong>: ช็อตดอลลี่ผ่านบาร์เครื่องดื่มสุดสมจริง</li>
+                                <li><strong>การ์ดช้างท้าย (HyperFrames)</strong>: ปิดจ๊อบด้วย End Card แบรนด์ที่บอทประกอบให้ใน 1 วินาที</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size:12px; color:var(--color-text-muted);">
+                        💡 <strong>เรื่องสั้นจากครู Bo</strong>: เคยต้องตัดต่อมือข้ามวัน ➔ พรุ่งนี้แค่วนคอมเมนต์ฟีดแบ็กกับทีมบอทหลังบ้าน ก็ได้คลิปโฆษณาระดับมืออาชีพแล้ว!
+                    </p>
                 </div>
-                <div style="flex:1.0; text-align:center; display:flex; justify-content:center; align-items:center;">
-                    <video src="bo-assets-gmaicore/chang-ad-final-no-clip05.mp4" controls autoplay loop muted playsinline class="banana-img" style="max-height:360px; width:100%; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.8); background:#000;"></video>
+                <div style="flex:0.9; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:10px;">
+                    <video src="bo-assets-gmaicore/chang-ad-v14-bo.mp4" controls autoplay loop muted playsinline class="banana-img" style="max-height:330px; width:100%; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.8); background:#000;"></video>
+                    <div style="font-size:11px; color:#FFC000; font-family:var(--font-mono); background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px; border:1px dashed var(--color-border); width:100%;">
+                        💬 <strong>คำสั่งแก้:</strong> "พิมพ์ว่าซับหายไป / การ์ดช้างย้ายท้าย / ทำให้เท่ขึ้น" ➔ ได้รุ่น v14 ทันทีในเซสชันเดียว!
+                    </div>
                 </div>
             </div>
             <div class="slide-footer">

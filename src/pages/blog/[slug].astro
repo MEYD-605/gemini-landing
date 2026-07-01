@@ -56,6 +56,8 @@ const { Content } = await render(post);
       [&>blockquote]:border-l-4 [&>blockquote]:border-[var(--theme-primary)] [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:my-4 [&>blockquote]:text-[var(--theme-text-muted)]
       [&>pre]:p-4 [&>pre]:bg-[var(--theme-bg-pre)] [&>pre]:border [&>pre]:border-[var(--theme-border-sub)] [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:font-mono [&>pre]:text-xs [&>pre]:text-[var(--theme-text-pre)] [&>pre]:mb-4
       [&>code]:px-1.5 [&>code]:py-0.5 [&>code]:bg-[var(--theme-surface-sub)] [&>code]:border [&>code]:border-[var(--theme-border-sub)] [&>code]:rounded [&>code]:font-mono [&>code]:text-xs
+      [&_a]:text-[var(--theme-primary)] [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-[var(--theme-primary)]/40 hover:[&_a]:text-[var(--theme-secondary)] hover:[&_a]:decoration-current transition-colors
+      [&_strong]:font-semibold [&_strong]:text-[var(--theme-text)]
     ">
       <Content />
     </div>

@@ -16,6 +16,7 @@ html:not([data-palette]) {
   --theme-accent: #06b6d4;
   --theme-gradient-from: #38bdf8;
   --theme-gradient-to: #818cf8;
+  --theme-btn-text: #05050f;
   --theme-glow: rgba(56, 189, 248, 0.25);
   --theme-icon: "⚡";
   --theme-label: "Cosmic";
@@ -36,8 +37,9 @@ html[data-palette="emerald"] {
   --theme-primary-rgb: 16, 185, 129;
   --theme-secondary: #34d399;
   --theme-accent: #059669;
-  --theme-gradient-from: #10b981;
-  --theme-gradient-to: #fbbf24;
+  --theme-gradient-from: #34d399;
+  --theme-gradient-to: #10b981;
+  --theme-btn-text: #030806;
   --theme-glow: rgba(16, 185, 129, 0.25);
   --theme-icon: "🌿";
   --theme-label: "Emerald";
@@ -60,6 +62,7 @@ html[data-palette="sunset"] {
   --theme-accent: #e11d48;
   --theme-gradient-from: #f97316;
   --theme-gradient-to: #f43f5e;
+  --theme-btn-text: #0c0908;
   --theme-glow: rgba(249, 115, 22, 0.25);
   --theme-icon: "🌅";
   --theme-label: "Sunset";
@@ -76,17 +79,18 @@ html[data-palette="light"] {
   --theme-border-sub: rgba(15, 23, 42, 0.08);
   --theme-text: #0f172a;
   --theme-text-muted: #475569;
-  --theme-primary: #0284c7;
-  --theme-primary-rgb: 2, 132, 199;
+  --theme-primary: #0369a1;
+  --theme-primary-rgb: 3, 105, 161;
   --theme-secondary: #4f46e5;
-  --theme-accent: #0891b2;
-  --theme-gradient-from: #0284c7;
+  --theme-accent: #0e7490;
+  --theme-gradient-from: #0369a1;
   --theme-gradient-to: #4f46e5;
-  --theme-glow: rgba(2, 132, 199, 0.15);
+  --theme-btn-text: #ffffff;
+  --theme-glow: rgba(3, 105, 161, 0.15);
   --theme-icon: "☀️";
   --theme-label: "Light";
-  --theme-bg-pre: #f1f5f9;
-  --theme-text-pre: #0f172a;
+  --theme-bg-pre: #0f172a;
+  --theme-text-pre: #f8fafc;
 }
 
 /* ─── Base ─── */

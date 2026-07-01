@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Grok Lab - Course Poster (Light Theme)</title>
+    <title>School Grok Lab - Poster</title>
     <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-bg: #1E1610; /* Deep IPA Dark Beer Lacquer Theme */
-            --color-card-bg: #2A1F16; /* Slightly lighter beer-brown card */
+            --color-bg: oklch(7% 0.006 95); /* Deep warm-black lacquer */
+            --color-card-bg: rgba(255, 255, 255, 0.02); /* Glassmorphic card */
             --color-primary: #F59E0B; /* Golden Amber */
-            --color-secondary: #D97706; /* Deep Amber */
-            --color-accent: #F59E0B;
-            --color-success: #10B981;
-            --color-danger: #EF4444;
-            --color-border: #D97706; /* Deep amber border */
-            --color-text: #FDFBF7; /* Golden white text */
-            --color-text-muted: #B3A290;
+            --color-secondary: rgba(245, 158, 11, 0.08); /* Amber tint */
+            --color-accent: #FF9F0A;
+            --color-success: #30D158; /* iOS-like premium green */
+            --color-danger: #FF453A;
+            --color-border: rgba(255, 255, 255, 0.12); /* Low opacity 12% thin border */
+            --color-text: #FDFBF7; /* Cream white text */
+            --color-text-muted: rgba(255, 255, 255, 0.55);
             --gradient-primary: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
-            --font-heading: 'Fredoka', 'Sarabun', sans-serif;
+            --font-heading: 'Space Grotesk', 'Sarabun', sans-serif;
             --font-body: 'Inter', 'Sarabun', sans-serif;
             --font-mono: 'Fira Code', monospace;
         }
@@ -29,7 +29,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #120C08;
+            background-color: #0c0a08;
             color: var(--color-text);
             font-family: var(--font-body);
             line-height: 1.4;
@@ -44,11 +44,15 @@
             width: 100%;
             max-width: 840px;
             background: var(--color-bg);
-            background-image: radial-gradient(circle at 50% 100%, rgba(245, 158, 11, 0.12) 0%, transparent 80%),
-                              radial-gradient(circle at 10% 10%, rgba(217, 119, 6, 0.08) 0%, transparent 50%);
-            border: 3px solid var(--color-border);
-            box-shadow: 8px 8px 0px var(--color-border);
-            border-radius: 20px;
+            background-image: 
+                linear-gradient(rgba(245, 158, 11, 0.012) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 158, 11, 0.012) 1px, transparent 1px),
+                radial-gradient(circle at 50% 100%, rgba(245, 158, 11, 0.15) 0%, transparent 80%),
+                radial-gradient(circle at 10% 10%, rgba(217, 119, 6, 0.08) 0%, transparent 50%);
+            background-size: 24px 24px, 24px 24px, auto, auto;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05);
+            border-radius: 24px;
             padding: 40px;
             position: relative;
             display: flex;
@@ -61,33 +65,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px dashed var(--color-border);
-            padding-bottom: 16px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 20px;
         }
 
         .header-title h1 {
             font-family: var(--font-heading);
             font-size: 34px;
             font-weight: 700;
-            color: var(--color-text);
+            background: linear-gradient(135deg, #FFF 30%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             line-height: 1.1;
         }
 
         .header-title p {
             color: var(--color-text-muted);
             font-size: 15px;
-            margin-top: 2px;
+            margin-top: 4px;
             font-weight: 500;
         }
 
         .meta-badge {
-            border: 2px solid var(--color-border);
-            background: var(--color-secondary);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            background: rgba(245, 158, 11, 0.08);
             padding: 6px 14px;
             border-radius: 12px;
             font-size: 12px;
             font-weight: 700;
-            box-shadow: 2px 2px 0px var(--color-border);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.1);
+            color: var(--color-primary);
         }
 
         /* Flow sections */
@@ -105,8 +112,8 @@
         .section-title::after {
             content: "";
             flex-grow: 1;
-            height: 2px;
-            background: var(--color-border);
+            height: 1px;
+            background: linear-gradient(90deg, var(--color-border) 0%, transparent 100%);
         }
 
         /* Diagram grid */
@@ -116,15 +123,16 @@
             gap: 8px;
             align-items: center;
             background: var(--color-card-bg);
-            border: 2px solid var(--color-border);
-            box-shadow: 4px 4px 0px var(--color-border);
+            border: 1px solid var(--color-border);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             padding: 16px;
             border-radius: 16px;
+            backdrop-filter: blur(8px);
         }
 
         .node {
-            background: var(--color-bg);
-            border: 1px solid var(--color-border);
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 10px;
             padding: 12px 8px;
             text-align: center;
@@ -165,10 +173,11 @@
 
         .card {
             background: var(--color-card-bg);
-            border: 2px solid var(--color-border);
-            box-shadow: 4px 4px 0px var(--color-border);
+            border: 1px solid var(--color-border);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
             border-radius: 16px;
             padding: 20px;
+            backdrop-filter: blur(12px);
         }
 
         /* Commands list */
@@ -176,7 +185,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px dashed rgba(46,37,25,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             padding: 8px 0;
         }
 
@@ -197,12 +206,13 @@
 
         .command-code {
             font-family: var(--font-mono);
-            background: #231E18;
-            border: 1px solid var(--color-border);
-            padding: 2px 8px;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            padding: 4px 10px;
             border-radius: 6px;
-            color: #FFC000;
+            color: var(--color-primary);
             font-size: 12px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
         }
 
         /* Side info card */
@@ -225,9 +235,9 @@
 
         /* Embedded Banana Images */
         .banana-img {
-            border: 2px solid var(--color-border);
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: 10px;
-            box-shadow: 3px 3px 0px var(--color-border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             max-height: 80px;
             object-fit: cover;
         }
@@ -238,14 +248,14 @@
             grid-template-columns: 1.2fr 0.8fr auto;
             gap: 20px;
             align-items: center;
-            border-top: 2px dashed var(--color-border);
-            padding-top: 16px;
+            border-top: 1px solid var(--color-border);
+            padding-top: 20px;
         }
 
         .qr-placeholder {
             width: 80px;
             height: 80px;
-            border: 2px dashed var(--color-primary);
+            border: 1px dashed rgba(245, 158, 11, 0.4);
             border-radius: 12px;
             display: flex;
             justify-content: center;
@@ -254,9 +264,10 @@
             font-size: 9px;
             font-weight: 700;
             color: var(--color-primary);
-            background: rgba(255,123,57,0.05);
+            background: rgba(245, 158, 11, 0.04);
             padding: 6px;
             text-transform: uppercase;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
         }
 
         .rules-badge {
@@ -268,13 +279,13 @@
         .rule-item {
             font-size: 10px;
             font-weight: 600;
-            border: 1px solid var(--color-border);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 2px 8px;
             border-radius: 6px;
         }
 
-        .rule-ok { background: rgba(16, 185, 129, 0.1); color: var(--color-success); }
-        .rule-no { background: rgba(239, 68, 68, 0.1); color: var(--color-danger); }
+        .rule-ok { background: rgba(48, 209, 88, 0.1); color: var(--color-success); }
+        .rule-no { background: rgba(255, 69, 58, 0.1); color: var(--color-danger); }
 
         /* Subtle rising beer bubbles for poster */
         @keyframes rise-poster {

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Grok Lab - Student Slides (Light Theme)</title>
+    <title>School Grok Lab - Student Slides (Dark Theme)</title>
     <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --color-bg: oklch(7% 0.006 95); /* Premium Dark Lacquer Theme */
@@ -19,8 +19,8 @@
             --color-card-bg: oklch(11% 0.008 95); /* Slightly lighter lacquer card */
             --color-border: rgba(255, 255, 255, 0.12); /* Thin borders with low opacity 12-16% */
             --gradient-primary: linear-gradient(135deg, #FF7B39 0%, #FFC000 100%);
-            --font-heading: 'Fredoka', 'Sarabun', sans-serif;
-            --font-body: 'Inter', 'Sarabun', sans-serif;
+            --font-heading: 'Prompt', sans-serif;
+            --font-body: 'IBM Plex Sans Thai', sans-serif;
             --font-mono: 'Fira Code', monospace;
         }
 
@@ -30,6 +30,7 @@
             background-color: oklch(4% 0.005 95);
             color: var(--color-text);
             font-family: var(--font-body);
+            line-height: 1.6;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -162,7 +163,18 @@
             font-size: 32px;
             font-weight: 700;
             color: var(--color-text);
-            margin-bottom: 8px;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        p {
+            line-height: 1.6;
         }
 
         .grid-2 {
@@ -187,6 +199,12 @@
             border-color: var(--color-primary);
         }
 
+        .card p {
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+            color: var(--color-text-muted);
+        }
+
         .card-header {
             font-family: var(--font-heading);
             font-size: 18px;
@@ -204,16 +222,17 @@
 
         li {
             position: relative;
-            padding-left: 24px;
-            margin-bottom: 10px;
-            font-size: 15px;
-            line-height: 1.4;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         li::before {
             content: "🍌";
             position: absolute;
             left: 2px;
+            top: 2px;
             font-size: 14px;
         }
 
@@ -352,8 +371,8 @@
             </div>
             <div class="slide-content" style="flex-direction: row; gap: 40px; justify-content: center;">
                 <div style="flex: 1.2; text-align: left;">
-                    <h1 class="title-large" style="font-family:'Fredoka'; font-size:48px;">คุยก่อน ลงมือทีหลัง!<br><span style="color:var(--color-primary)">Talk First, Build Later</span></h1>
-                    <p class="subtitle" style="font-family:'Fredoka'; font-weight:600; margin-top:10px;">คอร์สสร้างเงินล้านจากคลิป Facebook Reels ด้วย AI & Grok CLI 🎬</p>
+                    <h1 class="title-large" style=" font-size:48px;">คุยก่อน ลงมือทีหลัง!<br><span style="color:var(--color-primary)">Talk First, Build Later</span></h1>
+                    <p class="subtitle" style=" font-weight:600; margin-top:10px;">คอร์สสร้างเงินล้านจากคลิป Facebook Reels ด้วย AI & Grok CLI 🎬</p>
                     <p class="thai-sub" style="font-size:15px; margin-top:8px;">โปรโมทหลักสูตรผ่านเพจ Triple Next (ผู้ติดตามกว่า 2.6 แสนคน) สอนสนุก เข้าใจง่าย!</p>
                 </div>
                 <div style="flex: 0.8; text-align: center;">
@@ -378,11 +397,11 @@
                     <p style="color:var(--color-text-muted); font-size:14px; margin-top:-4px;">ส่วนที่ยาก — infra, LoRA, fleet, server — <strong>ทีมเตรียมให้หมดแล้ว</strong> ผู้เรียนโฟกัสแค่ทำวิดีโอ!</p>
                     <div style="display:flex; flex-direction:column; gap:12px;">
                         <div class="card" style="padding:12px 16px;">
-                            <h4 style="color:var(--color-primary); font-family:'Fredoka'; font-size:16px; margin-bottom:4px;">🎬 ทำวิดีโอ Reels & 💬 ใช้ Discord</h4>
+                            <h4 style="color:var(--color-primary);  font-size:16px; margin-bottom:4px;">🎬 ทำวิดีโอ Reels & 💬 ใช้ Discord</h4>
                             <p style="font-size:12px; line-height:1.4;">สั่ง Grok เจนภาพและคลิปสั้น 6 วินาทีส่งตรงกลับเข้าห้องแชท Discord โหลดไปลงเพจได้ทันที</p>
                         </div>
                         <div class="card" style="padding:12px 16px;">
-                            <h4 style="color:var(--color-accent); font-family:'Fredoka'; font-size:16px; margin-bottom:4px;">⌨️ Terminal เล็กน้อย & ✨ ไม่ต้องเทรน LoRA</h4>
+                            <h4 style="color:var(--color-accent);  font-size:16px; margin-bottom:4px;">⌨️ Terminal เล็กน้อย & ✨ ไม่ต้องเทรน LoRA</h4>
                             <p style="font-size:12px; line-height:1.4;">พิมพ์คำสั่งสั้นๆ 3-4 บรรทัดพอ เลียนแบบและรันตามได้เลย ไม่ต้องเสียเวลาตั้ง Server หรือเทรน GPU</p>
                         </div>
                     </div>
@@ -408,19 +427,19 @@
                 <div class="flow-diagram-light">
                     <div style="text-align:center;">
                         <div style="font-size:36px;">💬</div>
-                        <h4 style="font-family:'Fredoka'; margin-top:4px;">1. Discord Prompt</h4>
+                        <h4 style=" margin-top:4px;">1. Discord Prompt</h4>
                         <p style="font-size:11px; color:var(--color-text-muted);">คุยในห้องแชทหาไอเดีย</p>
                     </div>
                     <div style="font-size:24px; color:var(--color-primary);">➔</div>
                     <div style="text-align:center;">
                         <div style="font-size:36px;">⚙️</div>
-                        <h4 style="font-family:'Fredoka'; margin-top:4px;">2. Grok CLI Engine</h4>
+                        <h4 style=" margin-top:4px;">2. Grok CLI Engine</h4>
                         <p style="font-size:11px; color:var(--color-text-muted);">บอทหลังบ้านสลักสคริปต์/เจนรูป</p>
                     </div>
                     <div style="font-size:24px; color:var(--color-primary);">➔</div>
                     <div style="text-align:center;">
                         <div style="font-size:36px;">🎬</div>
-                        <h4 style="font-family:'Fredoka'; margin-top:4px;">3. Reels Video Output</h4>
+                        <h4 style=" margin-top:4px;">3. Reels Video Output</h4>
                         <p style="font-size:11px; color:var(--color-text-muted);">ได้คลิปวิดีโอส่งกลับเข้าแชท</p>
                     </div>
                 </div>
@@ -450,7 +469,7 @@
                             <li><strong>รับรูป + วิดีโอในแชท</strong>: ดาวน์โหลดผลลัพธ์ผ่านช่องแชทนำไปโพสใช้งานได้ทันที ไม่ต้องเซ็ตอัปเซิร์ฟเวอร์</li>
                         </ul>
                         <div class="card" style="background:var(--color-secondary); margin-top:15px; padding:12px;">
-                            <h4 style="font-family:'Fredoka'; color:var(--color-primary); margin-bottom:4px;">💡 ทำไมใช้ Discord?</h4>
+                            <h4 style=" color:var(--color-primary); margin-bottom:4px;">💡 ทำไมใช้ Discord?</h4>
                             <p style="font-size:12px; line-height:1.4;">เห็นผลทันที · คุยกับครู/เพื่อนได้ · ไม่ต้องจำคำสั่งยาก — ส่วน infra ทีมดูแลให้หมดแล้ว</p>
                         </div>
                     </div>
@@ -505,21 +524,21 @@
                     <div style="display:flex; flex-direction:column; gap:12px; width:100%;">
                         <div style="display:flex; gap:15px;">
                             <div style="flex:1;">
-                                <h4 style="font-family:'Fredoka'; color:var(--color-primary); font-size:14px; margin-bottom:4px;">💬 คุยปกติเขียนบทคลิป</h4>
+                                <h4 style=" color:var(--color-primary); font-size:14px; margin-bottom:4px;">💬 คุยปกติเขียนบทคลิป</h4>
                                 <pre style="padding:8px 12px; font-size:12px;"><code style="font-size:12px;">grok "แต่งบทคลิป Reels เกี่ยวกับ AI"</code></pre>
                             </div>
                             <div style="flex:1;">
-                                <h4 style="font-family:'Fredoka'; color:var(--color-secondary); font-size:14px; margin-bottom:4px;">🎬 เจนวิดีโอทันควัน</h4>
+                                <h4 style=" color:var(--color-secondary); font-size:14px; margin-bottom:4px;">🎬 เจนวิดีโอทันควัน</h4>
                                 <pre style="padding:8px 12px; font-size:12px;"><code style="font-size:12px;">grok generate-video --prompt "space banana"</code></pre>
                             </div>
                         </div>
                         <div style="display:flex; gap:15px;">
                             <div style="flex:1;">
-                                <h4 style="font-family:'Fredoka'; color:var(--color-accent); font-size:14px; margin-bottom:4px;">💬 โหมดแชทโต้ตอบ</h4>
+                                <h4 style=" color:var(--color-accent); font-size:14px; margin-bottom:4px;">💬 โหมดแชทโต้ตอบ</h4>
                                 <pre style="padding:8px 12px; font-size:12px;"><code style="font-size:12px;">grok -i</code></pre>
                             </div>
                             <div style="flex:1;">
-                                <h4 style="font-family:'Fredoka'; color:var(--color-text); font-size:14px; margin-bottom:4px;">📊 ตรวจคิวงาน</h4>
+                                <h4 style=" color:var(--color-text); font-size:14px; margin-bottom:4px;">📊 ตรวจคิวงาน</h4>
                                 <pre style="padding:8px 12px; font-size:12px;"><code style="font-size:12px;">grok session list</code></pre>
                             </div>
                         </div>
@@ -573,11 +592,11 @@
                     <h2>ทำวิดีโอ Reels <span class="subtitle">/ 3 ขั้นตอนจบ</span></h2>
                     <div style="display:flex; flex-direction:column; gap:10px; width:100%;">
                         <div class="card" style="border-color:var(--color-primary); padding:12px 16px;">
-                            <h4 style="font-family:'Fredoka'; color:var(--color-primary); font-size:16px; margin-bottom:4px;">1️⃣ กำหนด Shot & สร้างภาพ</h4>
+                            <h4 style=" color:var(--color-primary); font-size:16px; margin-bottom:4px;">1️⃣ กำหนด Shot & สร้างภาพ</h4>
                             <p style="font-size:12px; line-height:1.4;">สั่งกำหนดมุมกล้องและสตอรี่บอร์ดผ่านช่องแชท Discord ระบบมีภาพใบหน้าอ้างอิงของครู Bo พร้อมใช้งานทันที</p>
                         </div>
                         <div class="card" style="padding:12px 16px;">
-                            <h4 style="font-family:'Fredoka'; color:var(--color-accent); font-size:16px; margin-bottom:4px;">2️⃣ เจนคลิป & 3️⃣ รับไฟล์วิดีโอ</h4>
+                            <h4 style=" color:var(--color-accent); font-size:16px; margin-bottom:4px;">2️⃣ เจนคลิป & 3️⃣ รับไฟล์วิดีโอ</h4>
                             <p style="font-size:12px; line-height:1.4;">บอทจะแอนิเมตภาพนิ่งเป็นคลิปสั้น 6 วินาที (ขนาดตรงตาม Reels) แล้วส่งไฟล์วิดีโอกลับเข้ามาในแชทให้ดาวน์โหลด</p>
                         </div>
                     </div>
@@ -675,15 +694,15 @@
             </div>
             <div class="slide-content" style="flex-direction:row; gap:30px; align-items:center;">
                 <div style="flex:1.3; text-align:left; display:flex; flex-direction:column; gap:12px;">
-                    <h2 style="font-family:'Fredoka'; font-size:32px; margin-bottom:-4px;">พบปัญหา โทรหาเรา!</h2>
+                    <h2 style=" font-size:32px; margin-bottom:-4px;">พบปัญหา โทรหาเรา!</h2>
                     <p class="subtitle" style="font-size:14px; margin-bottom:4px;">สตูดิโอจัดเตรียมอุปกรณ์เรียนรู้และระบบดูแลคุณแบบครบวงจร</p>
                     <div style="display:flex; flex-direction:column; gap:12px; width:100%;">
                         <div class="card" style="padding:12px 16px;">
-                            <h4 style="font-family:'Fredoka'; color:var(--color-primary); font-size:15px; margin-bottom:4px;">🏫 Triple Next Studio</h4>
+                            <h4 style=" color:var(--color-primary); font-size:15px; margin-bottom:4px;">🏫 Triple Next Studio</h4>
                             <p style="font-size:12px; color:var(--color-text-muted); line-height:1.4;">สถานที่เตรียมไว้ต้อนรับและดูแลผู้เรียน มีคอมพิวเตอร์และระบบแรนเดอร์ให้ใช้ฟรีตลอดคอร์ส</p>
                         </div>
                         <div class="card" style="padding:12px 16px;">
-                            <h4 style="font-family:'Fredoka'; color:var(--color-accent); font-size:15px; margin-bottom:4px;">💬 ห้องแชท Discord</h4>
+                            <h4 style=" color:var(--color-accent); font-size:15px; margin-bottom:4px;">💬 ห้องแชท Discord</h4>
                             <p style="font-size:12px; color:var(--color-text-muted); line-height:1.4;">สอบถามรายละเอียดการบ้าน แนวทางแก้ไข หรือคุยกับครูได้ตลอด 24 ชั่วโมงในห้องพิเศษ</p>
                         </div>
                     </div>

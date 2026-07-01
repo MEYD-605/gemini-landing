@@ -446,8 +446,8 @@
                     <div style="text-align:left;">
                         <ul>
                             <li><strong>เข้าห้องแชทคอร์ส</strong>: ครูแจกลิงก์ invite — ติดตั้ง Discord บนมือถือ/คอมได้ฟรี</li>
-                            <li><strong>พิมพ์ไอเดียคลิป</strong>: บอกว่าอยากได้ฉากอะไร โทนแบบไหน — บอท Grok รับคำสั่งให้</li>
-                            <li><strong>รับรูป + วิดีโอในแชท</strong>: ดาวน์โหลดจากห้อง → โพส Reels ได้เลย ไม่ต้อง SSH เข้า server</li>
+                            <li><strong>พิมพ์สั่งงานได้ครบเครื่อง</strong>: อยากสั่งอะไรพิมพ์บอกบอทได้เลย — สร้างภาพนิ่ง, คลิปวิดีโอ, ทำเทมเพลต (Templates), หรือเขียนโค้ดเพิ่มความสามารถบอท (Skills) ก็ทำได้หมด</li>
+                            <li><strong>รับรูป + วิดีโอในแชท</strong>: ดาวน์โหลดผลลัพธ์ผ่านช่องแชทนำไปโพสใช้งานได้ทันที ไม่ต้องเซ็ตอัปเซิร์ฟเวอร์</li>
                         </ul>
                         <div class="card" style="background:var(--color-secondary); margin-top:15px; padding:12px;">
                             <h4 style="font-family:'Fredoka'; color:var(--color-primary); margin-bottom:4px;">💡 ทำไมใช้ Discord?</h4>
@@ -600,8 +600,16 @@
             </div>
             <div class="slide-content" style="align-items:stretch;">
                 <h2>สร้างภาพประกอบคลิป <span class="subtitle">/ คำสั่งเดียวจบ</span></h2>
-                <p style="color:var(--color-text-muted); font-size:14px; margin-bottom:8px;">บอก Grok ว่าอยากได้ภาพแบบไหน — copy คำสั่งจากสไลด์ไปวางใน terminal ได้เลย</p>
-                <pre><code>grok "สร้างภาพครู Bo ยืนในสตูดิโอ สไตล์ Reels สดใส 16:9"</code></pre>
+                <p style="color:var(--color-text-muted); font-size:14px; margin-bottom:8px;">บอก Grok ว่าอยากได้ภาพแบบไหน — พิมพ์สั่งงานบอทในช่องแชท Discord ได้ทันที</p>
+                <div class="discord-message" style="background:#1e1f22; border: 1px solid var(--color-border); border-radius:12px; padding:12px 16px; width:100%; font-family:var(--font-body); text-align:left; margin-bottom:6px;">
+                    <div style="color:#5865F2; font-weight:bold; font-size:11px; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
+                        <span style="background:#5865F2; color:white; padding:2px 6px; border-radius:4px; font-size:9px; font-weight:800;">DISCORD BOT</span>
+                        <span style="color:var(--color-text-muted);">พิมพ์คำสั่งแชทเพื่อเจนภาพ</span>
+                    </div>
+                    <div style="color:var(--color-text); font-size:14px; font-family:var(--font-mono); line-height:1.4;">
+                        /grok "สร้างภาพครู Bo ยืนในสตูดิโอ สไตล์ Reels สดใส 16:9"
+                    </div>
+                </div>
                 <p class="thai-sub" style="margin-top:6px;">รูปหน้าครู Bo มี ref พร้อมแล้ว — <strong>ไม่ต้องเทรน LoRA</strong> · ได้ภาพใน Discord ภายในไม่กี่นาที</p>
                 <div style="display:flex; justify-content:center; margin-top:10px; gap:15px; width:100%;">
                     <div style="flex:1; text-align:center;">

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Grok Lab - Student Slides (Light Theme)</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FCF8F2; /* Soft warm banana cream background */
+            --color-text: #2E2519; /* Dark warm brown for high readability */
+            --color-text-muted: #7A6F5D;
+            --color-primary: #FF7B39; /* Warm orange */
+            --color-secondary: #FFC000; /* Banana yellow */
+            --color-accent: #3B82F6;
+            --color-card-bg: #FFFFFF;
+            --color-border: #2E2519;
+            --gradient-primary: linear-gradient(135deg, #FF7B39 0%, #FFC000 100%);
+            --font-heading: 'Fredoka', 'Sarabun', sans-serif;
+            --font-body: 'Inter', 'Sarabun', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #EFE9DF;
+            color: var(--color-text);
+            font-family: var(--font-body);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* 16:9 Slide Deck Container */
+        .slide-deck {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--color-bg);
+        }
+
+        @media (min-width: 1025px) {
+            .slide-deck {
+                max-width: calc(100vh * 16 / 9);
+                max-height: calc(100vw * 9 / 16);
+                aspect-ratio: 16 / 9;
+                border: 2px solid var(--color-text);
+                border-radius: 20px;
+                box-shadow: 0 20px 40px rgba(46, 37, 25, 0.15);
+                position: absolute;
+                inset: 0;
+                margin: auto;
+            }
+        }
+
+        /* Slide Structure */
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 50px 70px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            background-color: var(--color-bg);
+            background-image: radial-gradient(circle at 10% 10%, rgba(255, 192, 0, 0.08) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 90%, rgba(255, 123, 57, 0.08) 0%, transparent 40%);
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px dashed rgba(46, 37, 25, 0.15);
+            padding-bottom: 12px;
+        }
+
+        .slide-header .brand {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--color-primary);
+            letter-spacing: 0.02em;
+        }
+
+        .slide-header .tag {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            color: var(--color-text);
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 2px 2px 0px var(--color-border);
+        }
+
+        .slide-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-height: 72%;
+        }
+
+        .slide-footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px dashed rgba(46, 37, 25, 0.15);
+            padding-top: 12px;
+            color: var(--color-text-muted);
+            font-size: 13px;
+        }
+
+        /* Typography & Layout elements */
+        .title-large {
+            font-family: var(--font-heading);
+            font-size: clamp(38px, 5vw, 60px);
+            font-weight: 700;
+            color: var(--color-text);
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-size: clamp(16px, 2vw, 22px);
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        .thai-sub {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            display: block;
+            margin-top: 2px;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 8px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .card {
+            background: var(--color-card-bg);
+            border: 2px solid var(--color-text);
+            box-shadow: 4px 4px 0px var(--color-text);
+            border-radius: 16px;
+            padding: 20px;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--color-text);
+        }
+
+        .card-header {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        li::before {
+            content: "🍌";
+            position: absolute;
+            left: 2px;
+            font-size: 14px;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: #231E18;
+            border: 2px solid var(--color-text);
+            border-radius: 12px;
+            padding: 14px;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: #FFC000;
+            overflow-x: auto;
+            width: 100%;
+            text-align: left;
+            position: relative;
+        }
+
+        pre::before {
+            content: "🍌 Back Kitchen (Terminal)";
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            font-size: 9px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            color: var(--color-primary);
+            background: rgba(255, 123, 57, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* Nav controls */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 6px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+
+        .nav-controls {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 1000;
+            background: var(--color-bg);
+            border: 2px solid var(--color-text);
+            box-shadow: 3px 3px 0px var(--color-text);
+            padding: 6px 20px;
+            border-radius: 20px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--color-text);
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.1s;
+        }
+
+        .nav-btn:hover {
+            color: var(--color-primary);
+            transform: scale(1.2);
+        }
+
+        .slide-counter {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+            min-width: 65px;
+            text-align: center;
+        }
+
+        /* Metaphor badges */
+        .metaphor-badge {
+            background: rgba(255, 123, 57, 0.08);
+            border: 1px solid var(--color-text);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        /* Embedded Banana Images */
+        .banana-img {
+            border: 2px solid var(--color-text);
+            border-radius: 12px;
+            box-shadow: 4px 4px 0px var(--color-text);
+            max-height: 140px;
+            max-width: 100%;
+            object-fit: cover;
+        }
+
+        .flow-diagram-light {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            align-items: center;
+            background: #FFF;
+            border: 2px solid var(--color-text);
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 4px 4px 0px var(--color-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="slide-deck">
+        <!-- SLIDE 1: Title -->
+        <div class="slide active">
+            <div class="slide-header">
+                <span class="brand">🚀 TRIPLE NEXT x CLUBSXAI</span>
+                <span class="tag">REELS COURSE</span>
+            </div>
+            <div class="slide-content" style="flex-direction: row; gap: 40px; justify-content: center;">
+                <div style="flex: 1.2; text-align: left;">
+                    <h1 class="title-large" style="font-family:'Fredoka'; font-size:48px;">คุยก่อน ลงมือทีหลัง!<br><span style="color:var(--color-primary)">Talk First, Build Later</span></h1>
+                    <p class="subtitle" style="font-family:'Fredoka'; font-weight:600; margin-top:10px;">คอร์สสร้างเงินล้านจากคลิป Facebook Reels ด้วย AI & Grok CLI 🎬</p>
+                    <p class="thai-sub" style="font-size:15px; margin-top:8px;">โปรโมทหลักสูตรผ่านเพจ Triple Next (ผู้ติดตามกว่า 2.6 แสนคน) สอนสนุก เข้าใจง่าย!</p>
+                </div>
+                <div style="flex: 0.8; text-align: center;">
+                    <img src="img_001.jpg" alt="Instructor Master Bo" class="banana-img" style="max-height: 200px;">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Instructor: Master Bo & the Fleet</span>
+                <span>Press Space or Arrow keys</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: What You Learn (easy only) -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">WHAT YOU LEARN</span>
+            </div>
+            <div class="slide-content" style="flex-direction:row; gap:30px;">
+                <div style="flex:1.3; text-align:left; display:flex; flex-direction:column; gap:12px;">
+                    <h2>คอร์สนี้สอนแค่สิ่งที่ใช้ทำคลิปจริง <span class="subtitle">/ Easy & Practical</span></h2>
+                    <p style="color:var(--color-text-muted); font-size:14px; margin-top:-4px;">ส่วนที่ยาก — infra, LoRA, fleet, server — <strong>ทีมเตรียมให้หมดแล้ว</strong> ผู้เรียนโฟกัสแค่ทำวิดีโอ!</p>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        <div class="card" style="padding:12px 16px;">
+                            <h4 style="color:var(--color-primary); font-family:'Fredoka'; font-size:16px; margin-bottom:4px;">🎬 ทำวิดีโอ Reels & 💬 ใช้ Discord</h4>
+                            <p style="font-size:12px; line-height:1.4;">สั่ง Grok เจนภาพและคลิปสั้น 6 วินาทีส่งตรงกลับเข้าห้องแชท Discord โหลดไปลงเพจได้ทันที</p>
+                        </div>
+                        <div class="card" style="padding:12px 16px;">
+                            <h4 style="color:var(--color-accent); font-family:'Fredoka'; font-size:16px; margin-bottom:4px;">⌨️ Terminal เล็กน้อย & ✨ ไม่ต้องเทรน LoRA</h4>
+                            <p style="font-size:12px; line-height:1.4;">พิมพ์คำสั่งสั้นๆ 3-4 บรรทัดพอ เลียนแบบและรันตามได้เลย ไม่ต้องเสียเวลาตั้ง Server หรือเทรน GPU</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex:0.7; text-align:center; display:flex; align-items:center; justify-content:center;">
+                    <img src="bo-assets-gmaicore/bo-full-cafe-stand.jpg" alt="Master Bo Cafe" class="banana-img" style="max-height:220px;">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>10 Seats · เน้นทำจริง ไม่เน้นทฤษฎี</span>
+                <span>Slide 2 / 11</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: Visual Pipeline -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">PIPELINE</span>
+            </div>
+            <div class="slide-content">
+                <h2>The 3-Step Video Pipeline <span class="subtitle">/ แผนผังการทำงานหลัก</span></h2>
+                <div class="flow-diagram-light">
+                    <div style="text-align:center;">
+                        <div style="font-size:36px;">💬</div>
+                        <h4 style="font-family:'Fredoka'; margin-top:4px;">1. Discord Prompt</h4>
+                        <p style="font-size:11px; color:var(--color-text-muted);">คุยในห้องแชทหาไอเดีย</p>
+                    </div>
+                    <div style="font-size:24px; color:var(--color-primary);">➔</div>
+                    <div style="text-align:center;">
+                        <div style="font-size:36px;">⚙️</div>
+                        <h4 style="font-family:'Fredoka'; margin-top:4px;">2. Grok CLI Engine</h4>
+                        <p style="font-size:11px; color:var(--color-text-muted);">บอทหลังบ้านสลักสคริปต์/เจนรูป</p>
+                    </div>
+                    <div style="font-size:24px; color:var(--color-primary);">➔</div>
+                    <div style="text-align:center;">
+                        <div style="font-size:36px;">🎬</div>
+                        <h4 style="font-family:'Fredoka'; margin-top:4px;">3. Reels Video Output</h4>
+                        <p style="font-size:11px; color:var(--color-text-muted);">ได้คลิปวิดีโอส่งกลับเข้าแชท</p>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:center; margin-top:10px;">
+                    <img src="img_002.jpg" alt="AI Lab Candid" class="banana-img" style="max-height:100px;">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Video Loop</span>
+                <span>Slide 3 / 11</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Discord Workflow -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">DISCORD</span>
+            </div>
+            <div class="slide-content">
+                <h2>คุยใน Discord แล้วได้คลิปกลับ <span class="subtitle">/ Your Main Workspace</span></h2>
+                <div class="grid-2">
+                    <div style="text-align:left;">
+                        <ul>
+                            <li><strong>เข้าห้องแชทคอร์ส</strong>: ครูแจกลิงก์ invite — ติดตั้ง Discord บนมือถือ/คอมได้ฟรี</li>
+                            <li><strong>พิมพ์ไอเดียคลิป</strong>: บอกว่าอยากได้ฉากอะไร โทนแบบไหน — บอท Grok รับคำสั่งให้</li>
+                            <li><strong>รับรูป + วิดีโอในแชท</strong>: ดาวน์โหลดจากห้อง → โพส Reels ได้เลย ไม่ต้อง SSH เข้า server</li>
+                        </ul>
+                        <div class="card" style="background:#FFFDF9; margin-top:15px; padding:12px;">
+                            <h4 style="font-family:'Fredoka'; color:var(--color-primary); margin-bottom:4px;">💡 ทำไมใช้ Discord?</h4>
+                            <p style="font-size:12px; line-height:1.4;">เห็นผลทันที · คุยกับครู/เพื่อนได้ · ไม่ต้องจำคำสั่งยาก — ส่วน infra ทีมดูแลให้หมดแล้ว</p>
+                        </div>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="bo-assets-gmaicore/bo-portrait-v2-image-edit.jpg" alt="Master Bo instructor" class="banana-img" style="max-height:220px;">
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Discord-first · ไม่ต้องเข้า portal</span>
+                <span>Slide 4 / 11</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Quick Login (one-time) -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">LOGIN (ครั้งเดียว)</span>
+            </div>
+            <div class="slide-content" style="align-items:stretch;">
+                <h2>ล็อกอินครั้งแรก <span class="subtitle">/ ทำครั้งเดียวพอ</span></h2>
+                <div class="grid-2" style="align-items:center; gap:20px;">
+                    <div style="text-align:left;">
+                        <p style="color:var(--color-text-muted); font-size:14px; margin-bottom:8px;">ครูช่วยทุกอย่าง — แค่สแกน QR ครั้งเดียว แล้วใช้ได้ตลอดคอร์ส</p>
+                        <pre><code style="font-size:12px;">grok login --device-auth
+# เปิด https://x.ai/device บนมือถือ → กรอกโค้ด</code></pre>
+                        <div class="card" style="padding:10px; font-size:12px; text-align:left; margin-top:8px;">
+                            <strong>✅ ไม่ต้องจำ API key</strong> · ไม่ต้องตั้ง billing เอง · ทีมดูแลฝั่งหลังให้แล้ว
+                        </div>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="img_004.jpg" alt="Bo at home" class="banana-img" style="max-height:220px;">
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>ครั้งเดียวจบ</span>
+                <span>Slide 5 / 11</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Playful Commands -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">BASIC SHELL</span>
+            </div>
+            <div class="slide-content" style="flex-direction:row; gap:30px; align-items:center;">
+                <div style="flex:1.3; text-align:left; display:flex; flex-direction:column; gap:12px;">
+                    <h2>คำสั่งสนุกๆ ที่ควรรู้ <span class="subtitle">/ Playful CLI Snippets</span></h2>
+                    <div style="display:flex; flex-direction:column; gap:12px; width:100%;">
+                        <div style="display:flex; gap:15px;">
+                            <div style="flex:1;">
+                                <h4 style="font-family:'Fredoka'; color:var(--color-primary); font-size:14px; margin-bottom:4px;">💬 คุยปกติเขียนบทคลิป</h4>
+                                <pre style="padding:8px 12px; font-size:12px;"><code style="font-size:12px;">grok "แต่งบทคลิป Reels เกี่ยวกับ AI"</code></pre>
+                            </div>
+                            <div style="flex:1;">
+                                <h4 style="font-family:'Fredoka'; color:var(--color-secondary); font-size:14px; margin-bottom:4px;">🎬 เจนวิดีโอทันควัน</h4>
+                                <pre style="padding:8px 12px; font-size:12px;"><code style="font-size:12px;">grok generate-video --prompt "space banana"</code></pre>
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:15px;">
+                            <div style="flex:1;">
+                                <h4 style="font-family:'Fredoka'; color:var(--color-accent); font-size:14px; margin-bottom:4px;">💬 โหมดแชทโต้ตอบ</h4>
+                                <pre style="padding:8px 12px; font-size:12px;"><code style="font-size:12px;">grok -i</code></pre>
+                            </div>
+                            <div style="flex:1;">
+                                <h4 style="font-family:'Fredoka'; color:var(--color-text); font-size:14px; margin-bottom:4px;">📊 ตรวจคิวงาน</h4>
+                                <pre style="padding:8px 12px; font-size:12px;"><code style="font-size:12px;">grok session list</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex:0.7; text-align:center;">
+                    <img src="bo-assets-gmaicore/bo-life-office.jpg" alt="Master Bo terminal" class="banana-img" style="max-height:220px;">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Developer Engine</span>
+                <span>Slide 6 / 11</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Why No LoRA -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">WHY EASY</span>
+            </div>
+            <div class="slide-content" style="flex-direction:row; gap:40px;">
+                <div style="flex:1.2; text-align:left;">
+                    <h2>ทำไมไม่ต้องเทรน LoRA <span class="subtitle">/ Fleet ทำให้แล้ว</span></h2>
+                    <p style="font-size:14px; color:var(--color-text-muted); margin-bottom:10px;">คอร์สอื่นต้องเสียเวลาเทรนโมเดล ตั้ง GPU รอเป็นชั่วโมง — <strong>เราไม่ทำแบบนั้น</strong></p>
+                    <ul>
+                        <li>✅ <strong>image_edit + ref รูป</strong> — หน้าเหมือนได้ทันที ไม่ต้อง LoRA</li>
+                        <li>✅ <strong>Discord relay</strong> — ส่งคำสั่งผ่านแชท ไม่ต้องเขียน pipeline เอง</li>
+                        <li>✅ <strong>infra พร้อมแล้ว</strong> — server, sandbox, quota ทีมดูแลหมด</li>
+                        <li>✅ <strong>คุณโฟกัสแค่</strong> — คิดไอเดียคลิป + กดส่ง + โพส Reels</li>
+                    </ul>
+                </div>
+                <div style="flex:0.8; text-align:center;">
+                    <img src="bo-assets-gmaicore/bo-life-cafe.jpg" alt="Bo lifestyle" class="banana-img">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>ไม่เทรน LoRA · ไม่ตั้ง server</span>
+                <span>Slide 7 / 11</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: Make Video -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">VIDEO</span>
+            </div>
+            <div class="slide-content" style="flex-direction:row; gap:30px; align-items:center;">
+                <div style="flex:1.3; text-align:left; display:flex; flex-direction:column; gap:12px;">
+                    <h2>ทำวิดีโอ Reels <span class="subtitle">/ 3 ขั้นตอนจบ</span></h2>
+                    <div style="display:flex; flex-direction:column; gap:12px; width:100%;">
+                        <div class="card" style="border-color:var(--color-primary); padding:12px 16px;">
+                            <h4 style="font-family:'Fredoka'; color:var(--color-primary); font-size:16px; margin-bottom:4px;">1️⃣ สร้างภาพ (Image Generation)</h4>
+                            <p style="font-size:12px; line-height:1.4;">บอก Grok ว่าอยากได้ฉากแบบไหน โดยระบบมีการใส่ภาพใบหน้าจริงของครู Bo เป็น reference ไว้ให้แล้ว</p>
+                        </div>
+                        <div class="card" style="padding:12px 16px;">
+                            <h4 style="font-family:'Fredoka'; color:var(--color-accent); font-size:16px; margin-bottom:4px;">2️⃣ แอนิเมตเป็นคลิป & 3️⃣ ส่งผลลัพธ์กลับ Discord</h4>
+                            <p style="font-size:12px; line-height:1.4;">ภาพจะถูกเรนเดอร์เป็นคลิปสั้น 6 วินาที (ขนาดพอดีลง Reels) ส่งไฟล์วิดีโอกลับเข้าแชทให้โหลดไปโพสได้เลย</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex:0.7; text-align:center;">
+                    <img src="bo-assets-gmaicore/bo-life-neon.jpg" alt="Master Bo reels" class="banana-img" style="max-height:220px;">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Video-first · ไม่เน้นเทคนิคยาก</span>
+                <span>Slide 8 / 11</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Quick Image -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">IMAGE</span>
+            </div>
+            <div class="slide-content" style="align-items:stretch;">
+                <h2>สร้างภาพประกอบคลิป <span class="subtitle">/ คำสั่งเดียวจบ</span></h2>
+                <p style="color:var(--color-text-muted); font-size:14px; margin-bottom:8px;">บอก Grok ว่าอยากได้ภาพแบบไหน — copy คำสั่งจากสไลด์ไปวางใน terminal ได้เลย</p>
+                <pre><code>grok "สร้างภาพครู Bo ยืนในสตูดิโอ สไตล์ Reels สดใส 16:9"</code></pre>
+                <p class="thai-sub" style="margin-top:6px;">รูปหน้าครู Bo มี ref พร้อมแล้ว — <strong>ไม่ต้องเทรน LoRA</strong> · ได้ภาพใน Discord ภายในไม่กี่นาที</p>
+                <div style="display:flex; justify-content:center; margin-top:10px; gap:10px;">
+                    <img src="bo-assets-gmaicore/bo-life-studio.jpg" alt="Bo studio" class="banana-img" style="max-height:90px;">
+                    <img src="bo-assets-gmaicore/bo-v5-candid-park.jpg" alt="Bo candid" class="banana-img" style="max-height:90px;">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>image_edit · ไม่ต้อง ComfyUI</span>
+                <span>Slide 9 / 11</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: Pre-Class Checklist -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">CHECKLIST</span>
+            </div>
+            <div class="slide-content" style="flex-direction:row; gap:40px;">
+                <div style="flex:1.2; text-align:left;">
+                    <h2>เช็คความพร้อมก่อนเริ่ม! <span class="subtitle">/ 4 อย่างพอ</span></h2>
+                    <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+                        <div>💬 <strong>Discord พร้อม</strong>: ติดตั้งแอป + เข้าห้องคอร์สที่ครูแจก invite</div>
+                        <div>📱 <strong>มือถือสำหรับ login</strong>: สแกน QR ครั้งเดียวตอนเริ่มคอร์ส (สไลด์ 5)</div>
+                        <div>🎬 <strong>ไอเดียคลิป Reels</strong>: คิด hook แรก 1 ประโยค — คุยใน Discord ได้เลย</div>
+                        <div>✨ <strong>ไม่ต้องเตรียม</strong>: LoRA · GPU · server · ComfyUI — ทีมจัดให้หมดแล้ว</div>
+                    </div>
+                </div>
+                <div style="flex:0.8; text-align:center;">
+                    <img src="bo-assets-gmaicore/bo-v5-home-window.jpg" alt="Bo ready" class="banana-img">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>ง่ายกว่าที่คิด</span>
+                <span>Slide 10 / 11</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: Support details -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="brand">TALK FIRST, BUILD LATER</span>
+                <span class="tag">SUPPORT</span>
+            </div>
+            <div class="slide-content" style="flex-direction:row; gap:30px; align-items:center;">
+                <div style="flex:1.3; text-align:left; display:flex; flex-direction:column; gap:12px;">
+                    <h2 style="font-family:'Fredoka'; font-size:32px; margin-bottom:-4px;">พบปัญหา โทรหาเรา!</h2>
+                    <p class="subtitle" style="font-size:14px; margin-bottom:4px;">สตูดิโอจัดเตรียมอุปกรณ์เรียนรู้และระบบดูแลคุณแบบครบวงจร</p>
+                    <div style="display:flex; flex-direction:column; gap:12px; width:100%;">
+                        <div class="card" style="padding:12px 16px;">
+                            <h4 style="font-family:'Fredoka'; color:var(--color-primary); font-size:15px; margin-bottom:4px;">🏫 Triple Next Studio</h4>
+                            <p style="font-size:12px; color:var(--color-text-muted); line-height:1.4;">สถานที่เตรียมไว้ต้อนรับและดูแลผู้เรียน มีคอมพิวเตอร์และระบบแรนเดอร์ให้ใช้ฟรีตลอดคอร์ส</p>
+                        </div>
+                        <div class="card" style="padding:12px 16px;">
+                            <h4 style="font-family:'Fredoka'; color:var(--color-accent); font-size:15px; margin-bottom:4px;">💬 ห้องแชท Discord</h4>
+                            <p style="font-size:12px; color:var(--color-text-muted); line-height:1.4;">สอบถามรายละเอียดการบ้าน แนวทางแก้ไข หรือคุยกับครูได้ตลอด 24 ชั่วโมงในห้องพิเศษ</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex:0.7; text-align:center;">
+                    <img src="bo-assets-gmaicore/bo-full-condo-lobby.jpg" alt="Master Bo Support" class="banana-img" style="max-height:220px;">
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Course Promoted via Page: Triple Next</span>
+                <span>Slide 11 / 11</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="prevSlide()">←</button>
+        <span class="slide-counter"><span id="current">1</span> / <span id="total">11</span></span>
+        <button class="nav-btn" onclick="nextSlide()">→</button>
+    </div>
+
+    <script>
+        let current = 1;
+        const total = document.querySelectorAll('.slide').length;
+        document.getElementById('total').textContent = total;
+
+        function showSlide(n) {
+            if (n < 1) n = 1;
+            if (n > total) n = total;
+            current = n;
+            document.querySelectorAll('.slide').forEach((s, i) => {
+                s.classList.toggle('active', i === n - 1);
+            });
+            document.getElementById('current').textContent = n;
+            document.getElementById('progressBar').style.width = (n / total * 100) + '%';
+        }
+
+        function nextSlide() { showSlide(current + 1); }
+        function prevSlide() { showSlide(current - 1); }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-controls') && !e.target.closest('pre') && !e.target.closest('code')) {
+                nextSlide();
+            }
+        });
+
+        showSlide(1);
+    </script>
+</body>
+</html>

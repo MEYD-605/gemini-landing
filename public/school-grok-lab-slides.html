@@ -383,6 +383,119 @@
             border-radius: 50%;
             animation: rise 9s infinite linear;
         }
+
+        @media (max-width: 1024px) {
+            body {
+                overflow-x: hidden;
+                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
+                display: block;
+            }
+            .slide-deck {
+                width: 100vw;
+                height: auto;
+                min-height: 100vh;
+                overflow: visible;
+            }
+            .slide {
+                position: relative;
+                width: 100vw;
+                height: auto;
+                min-height: 100vh;
+                padding: 30px 20px 90px 20px; /* space for fixed nav counter at the bottom */
+                display: none;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 20px;
+                overflow: visible;
+                opacity: 0;
+                visibility: hidden;
+                transition: none;
+            }
+            .slide.active {
+                display: flex;
+                opacity: 1;
+                visibility: visible;
+            }
+            .slide-content {
+                flex-direction: column !important;
+                gap: 24px !important;
+                max-height: none !important;
+                align-items: stretch !important;
+                justify-content: flex-start !important;
+            }
+            .slide-content > div {
+                flex: none !important;
+                width: 100% !important;
+                text-align: left !important;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+            .title-large {
+                font-size: 28px !important;
+                text-align: center;
+                line-height: 1.2;
+            }
+            h2 {
+                font-size: 22px !important;
+                text-align: left;
+                line-height: 1.3;
+            }
+            .subtitle {
+                font-size: 14px !important;
+            }
+            .slide-header {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .slide-header .brand {
+                font-size: 14px;
+            }
+            .slide-header .tag {
+                font-size: 11px;
+                padding: 2px 8px;
+            }
+            .banana-img {
+                max-height: 240px !important;
+                width: 100% !important;
+                object-fit: cover !important;
+            }
+            video {
+                max-height: 240px !important;
+                width: 100% !important;
+            }
+            .slide-footer {
+                flex-direction: column;
+                gap: 6px;
+                align-items: flex-start;
+                margin-top: 30px;
+                padding-bottom: 10px;
+                border-top: 1px dashed var(--color-border);
+            }
+            /* Flow diagrams scrollable or stacked */
+            .flow-diagram-light {
+                flex-direction: column !important;
+                gap: 12px !important;
+                align-items: stretch !important;
+            }
+            .flow-diagram-light div:nth-child(even) {
+                transform: rotate(90deg) !important;
+                margin: 8px 0 !important;
+            }
+            .nav-btn {
+                width: 44px !important;
+                height: 44px !important;
+                font-size: 22px !important;
+            }
+            .nav-controls {
+                bottom: 12px !important;
+                padding: 4px 16px !important;
+            }
+        }
     </style>
 </head>
 <body>
